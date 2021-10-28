@@ -1,10 +1,14 @@
 import { memo, VFC } from "react";
 import { Box, Image, Stack, Text } from "@chakra-ui/react";
 
-type Props = {};
+type Props = {
+  imageUrl: string;
+  userName: string;
+  fullName: string;
+};
 
 export const UserCard: VFC<Props> = memo((props) => {
-  const {} = props;
+  const { imageUrl, userName, fullName } = props;
   return (
     <Box
       p={4}
@@ -19,15 +23,15 @@ export const UserCard: VFC<Props> = memo((props) => {
         <Image
           borderRadius="full"
           boxSize="160px"
-          src="https://images.unsplash.com/photo-1583875074734-b6fd484ddc67"
-          alt="プロフィール画像"
+          src={imageUrl}
+          alt={userName}
           m="auto"
         />
         <Text fontSize="lg" fontWeight="bold">
-          亜紀子
+          {userName}
         </Text>
         <Text fontSize="sm" color="gray">
-          加納亜紀子
+          {fullName}
         </Text>
       </Stack>
     </Box>
