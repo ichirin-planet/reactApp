@@ -16,7 +16,10 @@ export const UserManagement: VFC = memo(() => {
   const { getUsers, users, loading } = useAllUsers();
   useEffect(() => getUsers(), []);
 
-  const onClickUser = useCallback(() => onOpen(), []);
+  const onClickUser = useCallback((id: number) => {
+    console.log(id);
+    onOpen();
+  }, []);
   return (
     <>
       {loading ? (
@@ -28,6 +31,7 @@ export const UserManagement: VFC = memo(() => {
           {users.map((user) => (
             <WrapItem key={user.id}>
               <UserCard
+                id={user.id}
                 imageUrl="https://images.unsplash.com/photo-1583875074734-b6fd484ddc67"
                 userName={user.username}
                 fullName={user.name}
